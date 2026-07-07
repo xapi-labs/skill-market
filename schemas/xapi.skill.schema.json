@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/xapi-labs/skill-market/schemas/xapi.skill.schema.json",
+  "title": "xAPI Skill Manifest",
+  "type": "object",
+  "required": ["schemaVersion", "slug", "version"],
+  "additionalProperties": true,
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 40
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,62}[a-z0-9]$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:[-+][0-9A-Za-z.-]+)?$"
+    },
+    "license": {
+      "type": "string",
+      "maxLength": 80
+    },
+    "categories": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 40
+      }
+    },
+    "tags": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 40
+      }
+    },
+    "supportedAgents": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 60
+      }
+    },
+    "riskLevel": {
+      "enum": ["low", "medium", "high"]
+    },
+    "xapiDependencies": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "required": ["type"],
+        "additionalProperties": true,
+        "properties": {
+          "type": {
+            "enum": ["action", "apiService", "endpoint", "model", "oauth"]
+          },
+          "id": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "serviceSlug": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "endpointKey": {
+            "type": "string",
+            "maxLength": 240
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "purpose": {
+            "type": "string",
+            "maxLength": 500
+          }
+        }
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "network": {
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "type": "string",
+            "maxLength": 120
+          }
+        },
+        "writesExternalState": {
+          "type": "boolean"
+        },
+        "mayChargeUserBalance": {
+          "type": "boolean"
+        },
+        "handlesPersonalData": {
+          "type": "boolean"
+        }
+      }
+    },
+    "examples": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "required": ["title", "prompt"],
+        "additionalProperties": true,
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "prompt": {
+            "type": "string",
+            "maxLength": 2000
+          }
+        }
+      }
+    }
+  }
+}
