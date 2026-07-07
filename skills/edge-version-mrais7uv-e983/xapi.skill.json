@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "2026-07-01",
+  "slug": "edge-version-mrais7uv-e983",
+  "version": "0.1.1",
+  "categories": [
+    "testing"
+  ],
+  "tags": [
+    "edge"
+  ],
+  "supportedAgents": [
+    "universal"
+  ],
+  "riskLevel": "low",
+  "permissions": {
+    "network": [
+      "xapi.to"
+    ],
+    "writesExternalState": false,
+    "mayChargeUserBalance": false,
+    "handlesPersonalData": false
+  }
+}
