@@ -75,7 +75,6 @@ function addIssue(path, message) {
 }
 
 async function main() {
-  await validateRegistry();
   const entries = await readdir(SKILLS_DIR, { withFileTypes: true }).catch(
     (err) => {
       addIssue('skills', `cannot read skills directory: ${err.message}`);
@@ -88,6 +87,8 @@ async function main() {
     .map((entry) => entry.name)
     .sort();
 
+  const registryBySlug = await validateRegistry(skillDirs);
+
   for (const entry of entries) {
     if (entry.name === '.gitkeep') continue;
     if (!entry.isDirectory()) {
@@ -96,7 +97,7 @@ async function main() {
   }
 
   for (const slug of skillDirs) {
-    await validateSkill(slug);
+    await validateSkill(slug, registryBySlug.get(slug));
   }
 
   if (issues.length > 0) {
@@ -112,20 +113,21 @@ async function main() {
   );
 }
 
-async function validateRegistry() {
+async function validateRegistry(skillDirs) {
+  const bySlug = new Map();
   let registry;
   try {
     registry = JSON.parse(await readFile(REGISTRY_PATH, 'utf8'));
   } catch (err) {
     addIssue('registry.json', `invalid or missing registry: ${err.message}`);
-    return;
+    return bySlug;
   }
   if (registry.schemaVersion !== 1) {
     addIssue('registry.json', 'schemaVersion must be 1');
   }
   if (!Array.isArray(registry.skills)) {
     addIssue('registry.json', 'skills must be an array');
-    return;
+    return bySlug;
   }
   const seen = new Set();
   for (const [index, skill] of registry.skills.entries()) {
@@ -141,14 +143,32 @@ async function validateRegistry() {
       addIssue(where, `duplicate registry slug: ${skill.slug}`);
     }
     seen.add(skill.slug);
+    if (typeof skill.slug === 'string') bySlug.set(skill.slug, skill);
     const expectedPath = `skills/${skill.slug}`;
     if (skill.path !== expectedPath) {
       addIssue(where, `path must be ${expectedPath}`);
     }
+    if (!skill.name || typeof skill.name !== 'string') {
+      addIssue(where, 'name is required');
+    }
+    if (!SEMVER_RE.test(skill.version || '')) {
+      addIssue(where, 'version must be semver');
+    }
   }
+  for (const slug of skillDirs) {
+    if (!seen.has(slug)) {
+      addIssue('registry.json', `missing registry entry for skills/${slug}`);
+    }
+  }
+  for (const slug of seen) {
+    if (!skillDirs.includes(slug)) {
+      addIssue('registry.json', `entry points to missing directory: skills/${slug}`);
+    }
+  }
+  return bySlug;
 }
 
-async function validateSkill(slug) {
+async function validateSkill(slug, registryEntry) {
   const skillRoot = join(SKILLS_DIR, slug);
   if (!SLUG_RE.test(slug)) {
     addIssue(`skills/${slug}`, 'directory name is not a valid slug');
@@ -198,7 +218,7 @@ async function validateSkill(slug) {
       addIssue(repoPath, 'script files must live under scripts/ or eval-viewer/');
     }
 
-    if (isTextFile(rel)) {
+    if (isTextFile(rel) || SCRIPT_EXTENSIONS.has(ext)) {
       scanSecrets(repoPath, await readFile(file, 'utf8'));
     }
   }
@@ -206,11 +226,11 @@ async function validateSkill(slug) {
     addIssue(`skills/${slug}`, `skill package is larger than ${MAX_SKILL_BYTES} bytes`);
   }
 
-  await validateSkillMarkdown(slug, skillRoot);
+  await validateSkillMarkdown(slug, skillRoot, registryEntry);
   await validateXapiManifest(slug, skillRoot);
 }
 
-async function validateSkillMarkdown(slug, skillRoot) {
+async function validateSkillMarkdown(slug, skillRoot, registryEntry) {
   const repoPath = `skills/${slug}/SKILL.md`;
   let markdown;
   try {
@@ -235,6 +255,21 @@ async function validateSkillMarkdown(slug, skillRoot) {
   }
   if (version && !SEMVER_RE.test(version)) {
     addIssue(repoPath, 'frontmatter version must be semver');
+  }
+  if (registryEntry) {
+    const expectedVersion = version || '0.1.0';
+    if (registryEntry.name !== name) {
+      addIssue('registry.json', `name for "${slug}" must match SKILL.md`);
+    }
+    if (registryEntry.description !== description) {
+      addIssue('registry.json', `description for "${slug}" must match SKILL.md`);
+    }
+    if (registryEntry.version !== expectedVersion) {
+      addIssue(
+        'registry.json',
+        `version for "${slug}" must match SKILL.md (${expectedVersion})`,
+      );
+    }
   }
 }
 

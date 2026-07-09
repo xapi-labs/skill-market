@@ -3,18 +3,18 @@ name: Debug E2E Skill
 slug: github-e2e-260710002838
 version: "0.1.0"
 description: End-to-end skill marketplace validation package for xAPI publish flow.
-categories:
-  - developer
-  - testing
-tags:
-  - e2e
-  - publish
 metadata:
   xapi:
+    categories:
+      - developer
+      - testing
+    tags:
+      - e2e
+      - publish
     dependencies:
-      - type: endpoint
-        service: twitter
+      - service: twitter
         endpoint: resolve-profile
+        required: true
         purpose: Resolve public Twitter/X profiles during agent workflows.
 ---
 

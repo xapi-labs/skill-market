@@ -1,15 +1,42 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-09T23:32:45.234Z",
+  "generatedAt": "2026-07-09T23:38:08.292Z",
   "skills": [
     {
-      "slug": "e2e-hardening-2607100727",
-      "name": "Skill Market Hardened E2E",
-      "description": "Validate real R2 storage, GitHub commit checks, marketplace listing, and deduplicated installs.",
+      "slug": "debug-e2e-260710001912",
+      "name": "Debug E2E Skill",
+      "description": "End-to-end skill marketplace validation package for xAPI publish flow.",
       "version": "0.1.0",
-      "path": "skills/e2e-hardening-2607100727",
-      "publishedAt": "2026-07-09T23:32:45.234Z",
-      "normalizedSha256": "59897a7e0ef8d6fa975e26c803597e760ea5be6aa77211164d8a5bd6f23b18f3"
+      "path": "skills/debug-e2e-260710001912",
+      "publishedAt": null,
+      "normalizedSha256": null
+    },
+    {
+      "slug": "edge-version-mrais7uv-e983",
+      "name": "Edge edge-version-mrais7uv-e983",
+      "description": "Boundary test skill.",
+      "version": "0.1.0",
+      "path": "skills/edge-version-mrais7uv-e983",
+      "publishedAt": null,
+      "normalizedSha256": null
+    },
+    {
+      "slug": "github-e2e-260710002838",
+      "name": "Debug E2E Skill",
+      "description": "End-to-end skill marketplace validation package for xAPI publish flow.",
+      "version": "0.1.0",
+      "path": "skills/github-e2e-260710002838",
+      "publishedAt": null,
+      "normalizedSha256": null
+    },
+    {
+      "slug": "remote-r2-github-mrai7rvl-6ab1b1",
+      "name": "Remote R2 GitHub Smoke mrai7rvl-6ab1b1",
+      "description": "Verify xAPI Skill Marketplace real R2 storage and GitHub public repo publishing.",
+      "version": "0.1.0",
+      "path": "skills/remote-r2-github-mrai7rvl-6ab1b1",
+      "publishedAt": null,
+      "normalizedSha256": null
     }
   ]
 }

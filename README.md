@@ -7,7 +7,6 @@ Each published skill lives in one immutable slug directory:
 ```text
 skills/<slug>/
   SKILL.md
-  xapi.skill.json
   agents/
   references/
   scripts/
@@ -16,7 +15,9 @@ skills/<slug>/
   assets/
 ```
 
-`SKILL.md` is required. `xapi.skill.json` is optional, but recommended for marketplace metadata, xAPI dependency declarations, permissions, examples, and risk review hints.
+`SKILL.md` is required and is the canonical source. Put marketplace metadata,
+xAPI dependencies, permission hints, and examples in its frontmatter under
+`metadata.xapi`. `xapi.skill.json` is accepted only as a legacy fallback.
 
 Install pattern:
 
@@ -28,6 +29,13 @@ Publishing is performed by the xAPI Skill Marketplace review pipeline. Direct ma
 
 ```bash
 node scripts/validate-skill-market.mjs
+```
+
+After adding or updating a skill manually, regenerate the complete repository
+index before validating:
+
+```bash
+node scripts/generate-registry.mjs
 ```
 
 See [SPEC.md](./SPEC.md) for the package and repository contract.

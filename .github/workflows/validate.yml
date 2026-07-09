@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - 'skill-publish/**'
 
 permissions:
   contents: read

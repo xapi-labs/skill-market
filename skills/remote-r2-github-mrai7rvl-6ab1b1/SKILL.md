@@ -2,6 +2,28 @@
 name: Remote R2 GitHub Smoke mrai7rvl-6ab1b1
 description: Verify xAPI Skill Marketplace real R2 storage and GitHub public repo publishing.
 version: 0.1.0
+license: MIT
+supportedAgents:
+  - codex
+  - claude-code
+  - universal
+metadata:
+  xapi:
+    categories:
+      - testing
+      - marketplace
+    tags:
+      - xapi
+      - skill-market
+      - r2
+      - github
+    dependencies:
+      - service: xapi-skill-market
+        required: false
+        purpose: Optional marketplace status checks during operator-led validation.
+    examples:
+      - title: Validate publish pipeline
+        prompt: Check whether the latest smoke-test skill has been stored in R2 and published to the public GitHub repo.
 ---
 
 # Remote R2 GitHub Smoke
