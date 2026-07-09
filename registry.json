@@ -1,5 +1,15 @@
 {
   "schemaVersion": 1,
-  "generatedAt": null,
-  "skills": []
+  "generatedAt": "2026-07-09T23:32:45.234Z",
+  "skills": [
+    {
+      "slug": "e2e-hardening-2607100727",
+      "name": "Skill Market Hardened E2E",
+      "description": "Validate real R2 storage, GitHub commit checks, marketplace listing, and deduplicated installs.",
+      "version": "0.1.0",
+      "path": "skills/e2e-hardening-2607100727",
+      "publishedAt": "2026-07-09T23:32:45.234Z",
+      "normalizedSha256": "59897a7e0ef8d6fa975e26c803597e760ea5be6aa77211164d8a5bd6f23b18f3"
+    }
+  ]
 }
