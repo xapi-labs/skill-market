@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-09T23:38:08.292Z",
+  "generatedAt": "2026-07-09T23:53:42.833Z",
   "skills": [
     {
       "slug": "debug-e2e-260710001912",
@@ -37,6 +37,15 @@
       "path": "skills/remote-r2-github-mrai7rvl-6ab1b1",
       "publishedAt": null,
       "normalizedSha256": null
+    },
+    {
+      "slug": "zip-gate-2607100740",
+      "name": "ZIP Gate E2E",
+      "description": "Validate ZIP upload, legacy metadata migration, R2 storage, staged GitHub CI, and marketplace release.",
+      "version": "0.1.2",
+      "path": "skills/zip-gate-2607100740",
+      "publishedAt": "2026-07-09T23:53:42.831Z",
+      "normalizedSha256": "48fa273b4c52440b22eb50307f5c197c1cc137185f8fd5bb45a7f11b61c98ab7"
     }
   ]
 }
