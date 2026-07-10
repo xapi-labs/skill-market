@@ -1,7 +1,7 @@
 ---
 name: zip-gate-2607100740
 description: Validate ZIP upload, legacy metadata migration, R2 storage, staged GitHub CI, and marketplace release.
-version: 0.1.2
+version: 0.1.3
 slug: zip-gate-2607100740
 metadata:
   xapi:
