@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-10T00:10:16.502Z",
+  "generatedAt": "2026-07-10T06:26:12.833Z",
   "skills": [
     {
       "slug": "debug-e2e-260710001912",
@@ -28,6 +28,15 @@
       "path": "skills/github-e2e-260710002838",
       "publishedAt": null,
       "normalizedSha256": null
+    },
+    {
+      "slug": "manual-twitter-digest",
+      "name": "manual-twitter-digest",
+      "description": "Build a concise digest from a public X/Twitter profile through xAPI. Use this skill when a user asks for a recent public activity summary.",
+      "version": "0.1.0",
+      "path": "skills/manual-twitter-digest",
+      "publishedAt": "2026-07-10T06:26:12.832Z",
+      "normalizedSha256": "451c9e31fcfd730a75144c553330ae1bcaa843c19cbae61c22f80f7707789758"
     },
     {
       "slug": "remote-r2-github-mrai7rvl-6ab1b1",
