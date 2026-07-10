@@ -18,11 +18,13 @@ skills/<slug>/
 `SKILL.md` is required and is the canonical source. Put marketplace metadata,
 xAPI dependencies, permission hints, and examples in its frontmatter under
 `metadata.xapi`. `xapi.skill.json` is accepted only as a legacy fallback.
+The frontmatter `name` must equal the unique directory slug; the marketplace
+display name lives in `registry.json` and may be shared by multiple skills.
 
 Install pattern:
 
 ```bash
-npx skills add xapi-labs/skill-market --skill <slug>
+npx skills add https://github.com/xapi-labs/skill-market/tree/main/skills/<slug>
 ```
 
 Publishing is performed by the xAPI Skill Marketplace review pipeline. Direct manual changes under `skills/` should pass the repository validator:

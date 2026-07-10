@@ -1,5 +1,5 @@
 ---
-name: Debug E2E Skill
+name: debug-e2e-260710001912
 slug: debug-e2e-260710001912
 version: "0.1.0"
 description: End-to-end skill marketplace validation package for xAPI publish flow.

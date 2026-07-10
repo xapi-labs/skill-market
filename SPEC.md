@@ -28,10 +28,10 @@ This repository stores public, reviewed xAPI agent skills. The backend publishes
 
 ## Skill Directory Rules
 
-- Directory name is the canonical slug and must match `^[a-z0-9][a-z0-9-]{1,62}[a-z0-9]$`.
+- Directory name is the canonical slug: 3-64 lowercase letters, numbers, and single hyphens; it may not start/end with a hyphen or contain `--`.
 - A skill must be published at `skills/<slug>/`.
 - `SKILL.md` is required and must start with YAML frontmatter.
-- `SKILL.md` frontmatter must include `name` and `description`.
+- `SKILL.md` frontmatter must include `name` and `description`; `name` must exactly match the directory slug.
 - `SKILL.md` frontmatter may include `slug`, but it must match the directory name.
 - `metadata.xapi` in `SKILL.md` is the canonical xAPI extension metadata.
 - `xapi.skill.json` is a legacy fallback. If present, `slug` must match the directory name.
@@ -60,7 +60,7 @@ skills/twitter-research/
 
 ```markdown
 ---
-name: Twitter Research
+name: twitter-research
 description: Research public Twitter/X users, tweets, timelines, and related web context through xAPI.
 slug: twitter-research
 version: 1.0.0
@@ -80,7 +80,7 @@ metadata:
 ---
 ```
 
-The description should tell an agent when to use the skill. It should not be a marketing tagline.
+The description should tell an agent when to use the skill. It should not be a marketing tagline. A human-friendly display name is stored separately in the registry, so display names may repeat without breaking local installation identity.
 
 ## `metadata.xapi`
 

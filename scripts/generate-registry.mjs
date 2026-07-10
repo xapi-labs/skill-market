@@ -26,7 +26,7 @@ for (const slug of dirs) {
   const previous = existingBySlug.get(slug) || {};
   skills.push({
     slug,
-    name: frontmatterString(frontmatter, 'name') || slug,
+    name: previous.name || markdownTitle(markdown) || slug,
     description: frontmatterString(frontmatter, 'description') || '',
     version: frontmatterString(frontmatter, 'version') || '0.1.0',
     path: `skills/${slug}`,
@@ -64,4 +64,9 @@ function frontmatterString(frontmatter, field) {
     return value.slice(1, -1);
   }
   return value;
+}
+
+function markdownTitle(markdown) {
+  const body = markdown.replace(/^---\s*\n[\s\S]*?\n---\s*\n?/, '');
+  return body.match(/^#\s+(.+)$/m)?.[1]?.trim() || '';
 }

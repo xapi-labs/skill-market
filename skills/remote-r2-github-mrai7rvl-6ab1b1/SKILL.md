@@ -1,5 +1,5 @@
 ---
-name: Remote R2 GitHub Smoke mrai7rvl-6ab1b1
+name: remote-r2-github-mrai7rvl-6ab1b1
 description: Verify xAPI Skill Marketplace real R2 storage and GitHub public repo publishing.
 version: 0.1.0
 license: MIT

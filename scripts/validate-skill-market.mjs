@@ -12,7 +12,7 @@ const MAX_FILES = 100;
 const MAX_FILE_BYTES = 512 * 1024;
 const MAX_SKILL_BYTES = 5 * 1024 * 1024;
 
-const SLUG_RE = /^[a-z0-9][a-z0-9-]{1,62}[a-z0-9]$/;
+const SLUG_RE = /^(?=.{3,64}$)[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const SEMVER_RE =
   /^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(?:[-+][0-9A-Za-z.-]+)?$/;
 
@@ -249,6 +249,9 @@ async function validateSkillMarkdown(slug, skillRoot, registryEntry) {
   const frontmatterSlug = frontmatterString(frontmatter, 'slug');
   const version = frontmatterString(frontmatter, 'version');
   if (!name) addIssue(repoPath, 'frontmatter must include name');
+  if (name && name !== slug) {
+    addIssue(repoPath, `frontmatter name must match directory slug "${slug}"`);
+  }
   if (!description) addIssue(repoPath, 'frontmatter must include description');
   if (frontmatterSlug && frontmatterSlug !== slug) {
     addIssue(repoPath, `frontmatter slug must match directory slug "${slug}"`);
@@ -258,9 +261,6 @@ async function validateSkillMarkdown(slug, skillRoot, registryEntry) {
   }
   if (registryEntry) {
     const expectedVersion = version || '0.1.0';
-    if (registryEntry.name !== name) {
-      addIssue('registry.json', `name for "${slug}" must match SKILL.md`);
-    }
     if (registryEntry.description !== description) {
       addIssue('registry.json', `description for "${slug}" must match SKILL.md`);
     }
