@@ -21,6 +21,7 @@ metadata:
       spendsCredits: false
       personalData: false
 slug: e2e-review-1781166958461
+version: 0.1.1
 ---
 
 # E2E Review 1781166958461

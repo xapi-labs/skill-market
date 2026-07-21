@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-21T06:22:52.133Z",
+  "generatedAt": "2026-07-21T06:33:10.466Z",
   "skills": [
     {
       "slug": "debug-e2e-260710001912",
@@ -15,10 +15,10 @@
       "slug": "e2e-review-1781166958461",
       "name": "E2E Review 1781166958461",
       "description": "E2E 自动审核测试：JSONPlaceholder 公开只读接口（GET，幂等无副作用）",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "path": "skills/e2e-review-1781166958461",
-      "publishedAt": "2026-07-21T06:22:52.133Z",
-      "normalizedSha256": "872421557f68f80e2d05e5c0b3b575a50da80e91c64e1105fe4dea04d15cd669"
+      "publishedAt": "2026-07-21T06:33:10.466Z",
+      "normalizedSha256": "d378439497af5a05a270aa5af579cd26a2a48f896d008bfca1e7e54a6935afd5"
     },
     {
       "slug": "edge-version-mrais7uv-e983",
