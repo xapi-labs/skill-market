@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-10T06:26:12.833Z",
+  "generatedAt": "2026-07-21T05:46:30.501Z",
   "skills": [
     {
       "slug": "debug-e2e-260710001912",
@@ -28,6 +28,15 @@
       "path": "skills/github-e2e-260710002838",
       "publishedAt": null,
       "normalizedSha256": null
+    },
+    {
+      "slug": "livetest-clean-skill",
+      "name": "livetest-clean-skill",
+      "description": "Live E2E test: real GitHub publish path",
+      "version": "0.1.1",
+      "path": "skills/livetest-clean-skill",
+      "publishedAt": "2026-07-21T05:46:30.500Z",
+      "normalizedSha256": "dfa640130ac21fc053027cf34fa4a019d1ce26ac7c7d2bc0457e4316705116cf"
     },
     {
       "slug": "manual-twitter-digest",
